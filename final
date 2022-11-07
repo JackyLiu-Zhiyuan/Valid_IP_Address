@@ -1,0 +1,73 @@
+# The following question can be solved with three for loops or with recursion. Choose the approach that’s easiest for you.
+
+# You have 20 minutes, you’re not expected to get to complete working code in that timeframe.
+
+# Write and test a function    numIpAddresses(string str)    that accepts a string of decimal characters 
+
+# and outputs the number of valid IPv4 addresses that can be represented with dot notation. 
+
+# eg    numIpAddresses("090251")     should return the number 3 (returning just the number, not the permutations themselves)
+
+# As a reminder, IPv4 addresses can be represented as a series of 4 decimal numbers separated by a '.' character. 
+
+# Each of the 4 numbers is in the range [0-255]. For the above example, the valid permutations are:
+
+# 0
+# 0.90.25.1
+# 0.90.2.51
+
+# Invalid permutation examples:
+
+# 0.902.5.1 — 902 is higher than 255
+# 09.0.2.51 — 09 is not a number.
+# 0.90.251. — only 3 numbers
+
+
+0000   4 
+255.255.255.255. 12
+
+090251
+
+5 places to put 3 dots
+
+O(N^3)
+
+
+
+numIpAddresses(input):
+  if len(input) < 4 or len(input) > 12:
+    return 0
+  count = 0
+  for i in range(len(input)):
+    for j in range(i,len(input)):
+      for k in range(k,len(input)):
+        piece_one = input[0,i]
+        piece_two = input[i,j]
+        piece_three = input[j,k]
+        piece_four = input[k,len(input)]
+        current_result = isValid(piece_one) and isValid(piece_two) and isValid(piece_three) and isValid(piece_four)
+        if current_result == True:
+          count += 1
+          
+  return count
+
+isValid(input):
+  if int(input) <= 255 and int(input) >= 0:
+    return True
+  else:
+    return False
+        
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  validate the length of the input
+  
